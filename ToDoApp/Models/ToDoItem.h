@@ -13,4 +13,7 @@
 @interface ToDoItem : NSObject
 @property NSString *toDoDescription;
 @property BOOL isCompleted;
+
+/* Initializes a To Do Item with the given description, and marks it by default as incompleted. */
+- (id)initWithDescription:(NSString *)toDoDescription;
 @end

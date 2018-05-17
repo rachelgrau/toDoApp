@@ -15,4 +15,7 @@
 #define UNCHECKED_CIRCLE @"UncheckedCircle"
 #define CHECKED_CIRLCE @"CheckedCircle"
 
+/* STRINGS */
+#define ADD_TO_DO_TEXTFIELD_PLACEHOLDER @"Add a goal..."
+
 #endif /* Constants_h */

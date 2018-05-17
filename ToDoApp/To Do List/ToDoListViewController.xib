@@ -12,6 +12,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ToDoListViewController">
             <connections>
+                <outlet property="addToDoButton" destination="P4s-tf-qm7" id="KTu-iZ-2zW"/>
+                <outlet property="addToDoTextField" destination="oah-Jz-08g" id="5Ym-eG-q3d"/>
                 <outlet property="toDosTableView" destination="iwe-79-8xH" id="lsy-Ss-HNI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -30,8 +32,32 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XOG-CZ-63C" userLabel="AddToDoBg">
                     <rect key="frame" x="0.0" y="80" width="375" height="60"/>
+                    <subviews>
+                        <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="oah-Jz-08g">
+                            <rect key="frame" x="27" y="15" width="278" height="30"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="0Xw-6K-FDU"/>
+                            </connections>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P4s-tf-qm7">
+                            <rect key="frame" x="323" y="14" width="32" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="32" id="UZ3-dl-gg8"/>
+                            </constraints>
+                            <state key="normal" title="ADD"/>
+                            <connections>
+                                <action selector="addToDoButtonPressed:" destination="-1" eventType="touchUpInside" id="sIe-dP-tdx"/>
+                            </connections>
+                        </button>
+                    </subviews>
                     <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
+                        <constraint firstItem="P4s-tf-qm7" firstAttribute="centerY" secondItem="XOG-CZ-63C" secondAttribute="centerY" id="MYU-0k-GJl"/>
+                        <constraint firstItem="oah-Jz-08g" firstAttribute="centerY" secondItem="XOG-CZ-63C" secondAttribute="centerY" id="b1d-ec-D99"/>
+                        <constraint firstAttribute="trailing" secondItem="P4s-tf-qm7" secondAttribute="trailing" constant="20" id="hjm-qw-5ta"/>
                         <constraint firstAttribute="height" constant="60" id="z9S-4Y-0ye"/>
                     </constraints>
                 </view>
@@ -53,6 +79,8 @@
                 <constraint firstItem="XOG-CZ-63C" firstAttribute="top" secondItem="17y-5F-Ji4" secondAttribute="bottom" id="MGO-C8-xgU"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="17y-5F-Ji4" secondAttribute="trailing" id="S4A-NM-Qek"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="top" secondItem="17y-5F-Ji4" secondAttribute="top" id="XSN-E3-fub"/>
+                <constraint firstItem="oah-Jz-08g" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="16" id="dqG-W3-K9N"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="oah-Jz-08g" secondAttribute="trailing" constant="70" id="iSw-hL-woQ"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="iwe-79-8xH" secondAttribute="trailing" id="ls7-Tv-OUv"/>
                 <constraint firstItem="17y-5F-Ji4" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="raG-T8-OYs"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="iwe-79-8xH" secondAttribute="bottom" id="xj5-qv-Ggy"/>
