@@ -32,7 +32,7 @@
     self.toDoItem = toDoItem;
     
     /* Update description of to do item. */
-    self.toDoDescriptionLabel.text = toDoItem.toDoDescription;
+    self.toDoDescriptionLabel.text = toDoItem.toDoTitle;
 
     /* Update check mark depending on whether item has been completed. */
     if (toDoItem.isCompleted) {

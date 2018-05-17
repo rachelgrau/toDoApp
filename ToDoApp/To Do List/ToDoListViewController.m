@@ -86,10 +86,11 @@
 /* Creates a To Do Item (model) and adds it to our array of To Dos. Then reloads the table view so we display it. Also clears the textfield after adding the To Do. */
 - (IBAction)addToDoButtonPressed:(id)sender {
     if (self.addToDoTextField.text.length > 0) {
-        ToDoItem *toDoItem = [[ToDoItem alloc] initWithDescription:self.addToDoTextField.text];
+        ToDoItem *toDoItem = [[ToDoItem alloc] initWithTitle:self.addToDoTextField.text];
         [self.myToDos addObject:toDoItem];
         [self.toDosTableView reloadData];
         self.addToDoTextField.text = @"";
+        self.addToDoButton.hidden = YES;
     }
 }
 
@@ -130,6 +131,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     ToDoItemViewController *toDoItemViewController = [[ToDoItemViewController alloc] initWithNibName:@"ToDoItemViewController" bundle:nil];
+    toDoItemViewController.toDoItem = [self.myToDos objectAtIndex:indexPath.row];
     [self.toDosTableView deselectRowAtIndexPath:indexPath animated:YES];
     [self.navigationController pushViewController:toDoItemViewController animated:YES];
 }
@@ -155,6 +157,7 @@
 - (void)dismissKeyboard {
     [self.addToDoTextField resignFirstResponder];
 }
+
 
 
 @end

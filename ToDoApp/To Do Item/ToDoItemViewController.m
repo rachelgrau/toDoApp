@@ -9,6 +9,7 @@
 
 #import "ToDoItemViewController.h"
 #import "Constants.h"
+#import "Utilities.h"
 
 @interface ToDoItemViewController ()
 
@@ -61,9 +62,12 @@
     if (self.titleTextView) {
         [self.titleTextView removeFromSuperview];
     }
-    self.titleTextView = [[UITextView alloc] initWithFrame:CGRectMake(LEFT_MARGIN, startingY, SCREEN_WIDTH - LEFT_MARGIN, 100)];
-    self.titleTextView.font = [UIFont fontWithName:@"Raleway-ExtraLight" size:30];
-    self.titleTextView.text = @"Clean the kitchen.";
+    UIFont *titleTextViewFont = [UIFont fontWithName:@"Raleway-ExtraLight" size:30];
+    CGFloat textViewHeight = [Utilities heightOfString:self.toDoItem.toDoTitle containedToWidth:SCREEN_WIDTH - (2 * LEFT_MARGIN) withFont:titleTextViewFont]; // programatically calculate height of string.
+    self.titleTextView = [[UITextView alloc] initWithFrame:CGRectMake(LEFT_MARGIN, startingY, SCREEN_WIDTH - (2 * LEFT_MARGIN), textViewHeight)];
+    self.titleTextView.font = titleTextViewFont;
+    self.titleTextView.delegate = self;
+    self.titleTextView.text = self.toDoItem.toDoTitle;
     [self.titleTextView setTextContainerInset:UIEdgeInsetsZero];
     self.titleTextView.textContainer.lineFragmentPadding = 0; // to remove left padding
     [self.view addSubview:self.titleTextView];
@@ -87,9 +91,16 @@
     if (self.descriptionTextView) {
         [self.descriptionTextView removeFromSuperview];
     }
-    self.descriptionTextView = [[UITextView alloc] initWithFrame:CGRectMake(LEFT_MARGIN, startingY, SCREEN_WIDTH - LEFT_MARGIN, 100)];
+    NSString *toDoDescription = self.toDoItem.toDoDescription;
+    if (toDoDescription.length <= 0) {
+        toDoDescription = TO_DO_DESCRIPTION_PLACEHOLDER;
+    }
+    UIFont *descriptionTextViewFont = [UIFont fontWithName:@"Raleway-ExtraLight" size:20];
+    CGFloat descriptionViewHeight = [Utilities heightOfString:toDoDescription containedToWidth:SCREEN_WIDTH - (2 * LEFT_MARGIN) withFont:descriptionTextViewFont]; // programatically calculate height of string.
+    self.descriptionTextView = [[UITextView alloc] initWithFrame:CGRectMake(LEFT_MARGIN, startingY, SCREEN_WIDTH - (2 * LEFT_MARGIN), descriptionViewHeight)];
     self.descriptionTextView.font = [UIFont fontWithName:@"Raleway-ExtraLight" size:20];
-    self.descriptionTextView.text = @"Clean the house before mom and dad get home!";
+    self.descriptionTextView.text = toDoDescription;
+    self.descriptionTextView.delegate = self;
     [self.descriptionTextView setTextContainerInset:UIEdgeInsetsZero];
     self.descriptionTextView.textContainer.lineFragmentPadding = 0; // to remove left padding
     [self.view addSubview:self.descriptionTextView];
@@ -103,10 +114,21 @@
 /* Programatically sets up all the colors since we have them saved in constants. */
 - (void)setUpColors {
     self.titleLabel.textColor = TO_DO_APP_TEXT_GRAY;
-    self.titleTextView.textColor = TO_DO_APP_TEXT_GRAY;
+    if ([self.titleTextView.text isEqualToString:TO_DO_TITLE_PLACEHOLDER]) {
+        self.titleTextView.textColor = TO_DO_APP_GRAY;
+    } else {
+        self.titleTextView.textColor = TO_DO_APP_TEXT_GRAY;
+    }
     self.descriptionLabel.textColor = TO_DO_APP_TEXT_GRAY;
     self.descriptionTextView.textColor = TO_DO_APP_TEXT_GRAY;
+    if ([self.titleTextView.text isEqualToString:TO_DO_DESCRIPTION_PLACEHOLDER]) {
+        self.titleTextView.textColor = TO_DO_APP_GRAY;
+    } else {
+        self.titleTextView.textColor = TO_DO_APP_TEXT_GRAY;
+    }
     [self.saveButton setBackgroundColor:TO_DO_APP_BLUE];
+    self.descriptionTextView.tintColor = TO_DO_APP_BLUE;
+    self.titleTextView.tintColor = TO_DO_APP_BLUE;
 }
 
 - (IBAction)saveButtonPressed:(id)sender {
@@ -126,4 +148,59 @@
     [self.descriptionTextView resignFirstResponder];
 }
 
+#pragma mark - TextView Delegate
+
+/* If they begin editing a textview, check if the text that was there was the placeholder. If so, let's clear it. */
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    if (textView == self.titleTextView) {
+        if ([textView.text isEqualToString:TO_DO_TITLE_PLACEHOLDER]) {
+            textView.text = @"";
+            textView.textColor = TO_DO_APP_TEXT_GRAY;
+        }
+    } else if (textView == self.descriptionTextView) {
+        if ([textView.text isEqualToString:TO_DO_DESCRIPTION_PLACEHOLDER]) {
+            textView.text = @"";
+            textView.textColor = TO_DO_APP_TEXT_GRAY;
+        }
+    }
+    [textView becomeFirstResponder];
+}
+
+/* If they end editing a textview, check if they left it empty. If so, display the placeholder. If the title is empty, disable the save button. */
+- (void)textViewDidEndEditing:(UITextView *)textView {
+
+    if (textView.text.length == 0) {
+        if (textView == self.titleTextView) {
+            textView.text = TO_DO_TITLE_PLACEHOLDER;
+            textView.textColor = TO_DO_APP_GRAY;
+            self.saveButton.enabled = NO;
+            [self.saveButton setBackgroundColor:TO_DO_APP_LIGHTEST_GRAY];
+        } else if (textView == self.descriptionTextView) {
+            textView.text = TO_DO_DESCRIPTION_PLACEHOLDER;
+            textView.textColor = TO_DO_APP_GRAY;
+        }
+    }
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if (textView == self.titleTextView) {
+        if ([textView.text isEqualToString:TO_DO_TITLE_PLACEHOLDER]) {
+            self.saveButton.enabled = NO;
+            [self.saveButton setBackgroundColor:TO_DO_APP_LIGHTEST_GRAY];
+        } else {
+            self.saveButton.enabled = YES;
+            [self.saveButton setBackgroundColor:TO_DO_APP_BLUE];
+        }
+    } else if (textView == self.descriptionTextView) {
+        if ([textView.text isEqualToString:TO_DO_DESCRIPTION_PLACEHOLDER]) {
+            self.saveButton.enabled = NO;
+            [self.saveButton setBackgroundColor:TO_DO_APP_LIGHTEST_GRAY];
+        } else {
+            self.saveButton.enabled = YES;
+            [self.saveButton setBackgroundColor:TO_DO_APP_BLUE];
+        }
+    }
+    return YES;
+}
 @end

@@ -18,6 +18,8 @@
 
 /* STRINGS */
 #define ADD_TO_DO_TEXTFIELD_PLACEHOLDER @"Add a goal..."
+#define TO_DO_TITLE_PLACEHOLDER @"Add a title."
+#define TO_DO_DESCRIPTION_PLACEHOLDER @"Add a description."
 
 /* COLORS */
 #define TO_DO_APP_BLUE [UIColor colorWithRed:0.33 green:0.77 blue:0.90 alpha:1.0]

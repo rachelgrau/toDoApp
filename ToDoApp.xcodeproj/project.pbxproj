@@ -41,6 +41,7 @@
 		CC655C0520AE27670010336C /* Raleway-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CC655BF220AE27670010336C /* Raleway-Light.ttf */; };
 		CC655C0620AE27670010336C /* Raleway-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CC655BF320AE27670010336C /* Raleway-Italic.ttf */; };
 		CC655C0720AE27670010336C /* Raleway-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CC655BF420AE27670010336C /* Raleway-LightItalic.ttf */; };
+		CC655C0A20AE38AB0010336C /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CC655C0920AE38AB0010336C /* Utilities.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +89,8 @@
 		CC655BF220AE27670010336C /* Raleway-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Light.ttf"; sourceTree = "<group>"; };
 		CC655BF320AE27670010336C /* Raleway-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Italic.ttf"; sourceTree = "<group>"; };
 		CC655BF420AE27670010336C /* Raleway-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-LightItalic.ttf"; sourceTree = "<group>"; };
+		CC655C0820AE38AB0010336C /* Utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
+		CC655C0920AE38AB0010336C /* Utilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +108,8 @@
 			isa = PBXGroup;
 			children = (
 				CC655BDA20ADF3AF0010336C /* Constants.h */,
+				CC655C0820AE38AB0010336C /* Utilities.h */,
+				CC655C0920AE38AB0010336C /* Utilities.m */,
 				CC655BAC20ADE3B90010336C /* ToDoApp */,
 				CC655BAB20ADE3B90010336C /* Products */,
 			);
@@ -296,6 +301,7 @@
 				CC655BC620ADEB8C0010336C /* ToDoListViewController.m in Sources */,
 				CC655BB220ADE3BA0010336C /* ViewController.m in Sources */,
 				CC655BD620ADF16C0010336C /* ToDoItem.m in Sources */,
+				CC655C0A20AE38AB0010336C /* Utilities.m in Sources */,
 				CC655BD120ADF09D0010336C /* ToDoItemTableViewCell.m in Sources */,
 				CC655BBD20ADE3BA0010336C /* main.m in Sources */,
 				CC655BAF20ADE3BA0010336C /* AppDelegate.m in Sources */,

@@ -8,7 +8,8 @@
 //  Copyright © 2018 Rachel. All rights reserved.
 
 #import <UIKit/UIKit.h>
+#import "ToDoItem.h"
 
 @interface ToDoItemViewController : UIViewController
-
+@property ToDoItem *toDoItem;
 @end

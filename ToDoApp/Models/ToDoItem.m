@@ -11,13 +11,18 @@
 
 @implementation ToDoItem
 
-- (id)initWithDescription:(NSString *)toDoDescription {
+- (id)initWithTitle:(NSString *)toDoTitle {
     self = [super init];
     if (self) {
-        self.toDoDescription = toDoDescription;
+        self.toDoTitle = toDoTitle;
         self.isCompleted = NO;
     }
     return self;
 }
+
+- (NSString*)description {
+    return [NSString stringWithFormat:@"\Title %@\Description: %@\Is Completed:%d\r", self.toDoTitle, self.toDoDescription, self.isCompleted];
+}
+
 
 @end
