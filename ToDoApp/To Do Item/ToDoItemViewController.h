@@ -10,6 +10,12 @@
 #import <UIKit/UIKit.h>
 #import "ToDoItem.h"
 
-@interface ToDoItemViewController : UIViewController
+/* Delegate method which we'll call when the user clicks "save." */
+@protocol ToDoItemDelegate
+- (void)editedToDoItem:(ToDoItem *)toDoItem;
+@end
+
+@interface ToDoItemViewController : UIViewController <UITextFieldDelegate>
 @property ToDoItem *toDoItem;
+@property (weak, nonatomic) id delegate;
 @end

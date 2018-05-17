@@ -26,6 +26,10 @@
 /* MODELS */
 @property NSMutableArray *myToDos;
 
+/* OTHER */
+/* When the user selects a particular to do item, we store the index path because if they decide to edit it, we want to remember where it is so that we can update the item after they're done editing. */
+@property NSIndexPath *selectedIndexPath;
+
 @end
 
 #define TO_DO_TABLE_VIEW_CELL_HEIGHT 64
@@ -130,8 +134,10 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.selectedIndexPath = indexPath;
     ToDoItemViewController *toDoItemViewController = [[ToDoItemViewController alloc] initWithNibName:@"ToDoItemViewController" bundle:nil];
     toDoItemViewController.toDoItem = [self.myToDos objectAtIndex:indexPath.row];
+    toDoItemViewController.delegate = self;
     [self.toDosTableView deselectRowAtIndexPath:indexPath animated:YES];
     [self.navigationController pushViewController:toDoItemViewController animated:YES];
 }
@@ -158,6 +164,12 @@
     [self.addToDoTextField resignFirstResponder];
 }
 
+#pragma mark – ToDoItem Delegate
 
+/* This method gets called after a user clicks on a particular to do item, edits it, and presses save. */
+- (void)editedToDoItem:(ToDoItem *)toDoItem {
+    [self.myToDos replaceObjectAtIndex:self.selectedIndexPath.row withObject:toDoItem];
+    [self.toDosTableView reloadData];
+}
 
 @end

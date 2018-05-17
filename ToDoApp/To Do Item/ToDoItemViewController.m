@@ -121,10 +121,10 @@
     }
     self.descriptionLabel.textColor = TO_DO_APP_TEXT_GRAY;
     self.descriptionTextView.textColor = TO_DO_APP_TEXT_GRAY;
-    if ([self.titleTextView.text isEqualToString:TO_DO_DESCRIPTION_PLACEHOLDER]) {
-        self.titleTextView.textColor = TO_DO_APP_GRAY;
+    if ([self.descriptionTextView.text isEqualToString:TO_DO_DESCRIPTION_PLACEHOLDER]) {
+        self.descriptionTextView.textColor = TO_DO_APP_GRAY;
     } else {
-        self.titleTextView.textColor = TO_DO_APP_TEXT_GRAY;
+        self.descriptionTextView.textColor = TO_DO_APP_TEXT_GRAY;
     }
     [self.saveButton setBackgroundColor:TO_DO_APP_BLUE];
     self.descriptionTextView.tintColor = TO_DO_APP_BLUE;
@@ -132,6 +132,17 @@
 }
 
 - (IBAction)saveButtonPressed:(id)sender {
+    if ([self.delegate respondsToSelector:@selector(editedToDoItem:)]) {
+        /* Update the to do item and pass it to our delegate. */
+        self.toDoItem.toDoTitle = self.titleTextView.text;
+        if ([self.descriptionTextView.text isEqualToString:TO_DO_DESCRIPTION_PLACEHOLDER]) {
+            self.toDoItem.toDoDescription = @"";
+        } else {
+            self.toDoItem.toDoDescription = self.descriptionTextView.text;
+        }
+        [self.delegate editedToDoItem:self.toDoItem];
+    }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
