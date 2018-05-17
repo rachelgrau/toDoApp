@@ -12,6 +12,7 @@
 
 #import "ToDoListViewController.h"
 #import "ToDoItemTableViewCell.h"
+#import "ToDoItemViewController.h"
 #import "ToDoItem.h"
 #import "Constants.h"
 
@@ -27,28 +28,52 @@
 
 @end
 
-#define TO_DO_TABLE_VIEW_CELL_HEIGHT 50
+#define TO_DO_TABLE_VIEW_CELL_HEIGHT 64
 #define TO_DO_ITEM_CELL_IDENTIFIER @"ToDoItemTableViewCellIdentifier"
 
 @implementation ToDoListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"Hi";
-    self.navigationItem.title = @"HI!";
-    
+    [[self navigationController] setNavigationBarHidden:YES animated:YES];
+
     /* Set up add to do textfield. */
     self.addToDoTextField.placeholder = ADD_TO_DO_TEXTFIELD_PLACEHOLDER;
     self.addToDoButton.hidden = YES; // hide the add button until a user has typed something
     [self.addToDoTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
 
+    /* Make the table view not bounce */
+    self.toDosTableView.bounces = NO;
+    self.toDosTableView.alwaysBounceVertical = NO;
+
+    /* This line makes it so that we don't have separator lines showing up on blank cells. */
+    self.toDosTableView.tableFooterView = [UIView new];
+    
+    /* Add a tap gesture recognizer so that when they're typing in a textfield they can hide the keyboard by tapping outside of it.  */
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    tap.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:tap];
+    
+    /* This line gets rid of a bit of padding at the top of the table view.. */
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
     /* Initialize to do list model. */
     self.myToDos = [[NSMutableArray alloc] init];
     ToDoItem *item = [[ToDoItem alloc]  init];
-    item.toDoDescription = @"Clean the kitchen.";
+    item.toDoTitle = @"Clean the kitchen.";
+    item.toDoDescription = @"Clean the house before mom and dad get home!";
     item.isCompleted = NO;
     [self.myToDos addObject:item];
+    
+    [self setUpColors];
+}
+
+- (void)setUpColors {
+    [self.addToDoButton setTitleColor:TO_DO_APP_BLUE forState:UIControlStateNormal];
+    self.addToDoTextField.textColor = TO_DO_APP_TEXT_GRAY;
+    self.addToDoTextField.tintColor = TO_DO_APP_BLUE;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -104,7 +129,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    ToDoItemViewController *toDoItemViewController = [[ToDoItemViewController alloc] initWithNibName:@"ToDoItemViewController" bundle:nil];
+    [self.toDosTableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self.navigationController pushViewController:toDoItemViewController animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -120,7 +147,14 @@
         self.addToDoButton.hidden = NO;
     } else {
         self.addToDoButton.hidden = YES;
+        /* Hide the keyboard */
+        [self.addToDoTextField resignFirstResponder];
     }
 }
+
+- (void)dismissKeyboard {
+    [self.addToDoTextField resignFirstResponder];
+}
+
 
 @end

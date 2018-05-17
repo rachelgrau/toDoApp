@@ -17,7 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [[self navigationController] setNavigationBarHidden:YES animated:YES];
+    self.navigationItem.title = @"My To Do Lists";
 }
 
 - (void)didReceiveMemoryWarning {

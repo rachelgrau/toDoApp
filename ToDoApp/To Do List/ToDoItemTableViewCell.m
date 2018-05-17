@@ -33,7 +33,7 @@
     
     /* Update description of to do item. */
     self.toDoDescriptionLabel.text = toDoItem.toDoDescription;
-    
+
     /* Update check mark depending on whether item has been completed. */
     if (toDoItem.isCompleted) {
         [self.completeItemButton setBackgroundImage:[UIImage imageNamed:CHECKED_CIRLCE] forState:UIControlStateNormal];

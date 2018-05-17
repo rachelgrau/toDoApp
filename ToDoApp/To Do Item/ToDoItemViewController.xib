@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Raleway-Bold.ttf">
+            <string>Raleway-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ToDoItemViewController">
+            <connections>
+                <outlet property="backButton" destination="ShX-7a-0VD" id="4jt-hX-XyP"/>
+                <outlet property="saveButton" destination="vwx-ad-eTl" id="nR7-Uk-YlU"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vwx-ad-eTl">
+                    <rect key="frame" x="0.0" y="605" width="375" height="62"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="62" id="6cU-Bh-dss"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Raleway-Bold" family="Raleway" pointSize="20"/>
+                    <state key="normal" title="SAVE">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="saveButtonPressed:" destination="-1" eventType="touchUpInside" id="uX3-ce-ECc"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ShX-7a-0VD">
+                    <rect key="frame" x="36" y="70" width="14" height="27"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="27" id="GPx-mV-1rX"/>
+                        <constraint firstAttribute="width" constant="14" id="d2J-EA-a7y"/>
+                    </constraints>
+                    <state key="normal" title="Button" image="BackButton"/>
+                    <connections>
+                        <action selector="backButtonPressed:" destination="-1" eventType="touchUpInside" id="39g-Jh-PoL"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vwx-ad-eTl" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="Age-Ir-owS"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="vwx-ad-eTl" secondAttribute="bottom" id="Kfi-sf-d0T"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="vwx-ad-eTl" secondAttribute="trailing" id="i25-ii-EtS"/>
+                <constraint firstItem="ShX-7a-0VD" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="36" id="jdB-YM-Gb1"/>
+                <constraint firstItem="ShX-7a-0VD" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="50" id="yi1-jE-ku2"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="34.5" y="53.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="BackButton" width="15" height="27"/>
+    </resources>
+</document>
