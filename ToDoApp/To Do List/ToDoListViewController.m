@@ -20,6 +20,7 @@
 @interface ToDoListViewController ()
 
 /* VIEWS */
+@property UIButton *backButton;
 @property (strong, nonatomic) IBOutlet UITableView *toDosTableView;
 @property (strong, nonatomic) IBOutlet UITextField *addToDoTextField;
 @property (strong, nonatomic) IBOutlet UIButton *addToDoButton;

@@ -17,7 +17,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ToDoItemViewController">
             <connections>
-                <outlet property="backButton" destination="ShX-7a-0VD" id="4jt-hX-XyP"/>
                 <outlet property="saveButton" destination="vwx-ad-eTl" id="nR7-Uk-YlU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -40,31 +39,15 @@
                         <action selector="saveButtonPressed:" destination="-1" eventType="touchUpInside" id="uX3-ce-ECc"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ShX-7a-0VD">
-                    <rect key="frame" x="36" y="70" width="67" height="27"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="27" id="GPx-mV-1rX"/>
-                        <constraint firstAttribute="width" constant="67" id="eug-rR-xJU"/>
-                    </constraints>
-                    <state key="normal" title="Button" image="BackButton"/>
-                    <connections>
-                        <action selector="backButtonPressed:" destination="-1" eventType="touchUpInside" id="39g-Jh-PoL"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="vwx-ad-eTl" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="Age-Ir-owS"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="vwx-ad-eTl" secondAttribute="bottom" id="Kfi-sf-d0T"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="vwx-ad-eTl" secondAttribute="trailing" id="i25-ii-EtS"/>
-                <constraint firstItem="ShX-7a-0VD" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="36" id="jdB-YM-Gb1"/>
-                <constraint firstItem="ShX-7a-0VD" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="50" id="yi1-jE-ku2"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <point key="canvasLocation" x="34.5" y="53.5"/>
         </view>
     </objects>
-    <resources>
-        <image name="BackButton" width="15" height="27"/>
-    </resources>
 </document>

@@ -17,7 +17,7 @@
 @property UIScrollView *scrollView;
 @property UIView *contentView;
 
-@property (strong, nonatomic) IBOutlet UIButton *backButton;
+@property UIButton *backButton;
 @property UILabel *titleLabel;
 @property UITextView *titleTextView;
 @property UILabel *descriptionLabel;
@@ -49,12 +49,24 @@
     const int LEFT_MARGIN = 36;
     const int VERTICAL_SPACE_BELOW_TITLE = 15; /* Space below a title (e.g., "DESCRIPTION" and the component that comes below it. */
     const int VERTICAL_SPACE_BETWEEN_SECTIONS = 48;
-    int startingY = self.backButton.frame.origin.y + self.backButton.frame.size.height + 40; /* Will be used as the y origin for every view. */
+    int startingY = 50;
     
     self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - self.saveButton.frame.size.height)];
     self.scrollView.bounces = NO;
     self.contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 20000)];
     [self.scrollView addSubview:self.contentView];
+    
+    /* Back button */
+    if (self.backButton) {
+        [self.backButton removeFromSuperview];
+    }
+    self.backButton = [[UIButton alloc] initWithFrame:CGRectMake(LEFT_MARGIN, startingY, 13, 27)];
+    [self.backButton addTarget:self action:@selector(backButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [self.backButton setImage:[UIImage imageNamed:BACK_BUTTON] forState:UIControlStateNormal];
+    [self.contentView addSubview:self.backButton];
+    
+    startingY += self.backButton.frame.size.height;
+    startingY += VERTICAL_SPACE_BETWEEN_SECTIONS;
     
     /* to-do title */
     if (self.titleLabel) {
