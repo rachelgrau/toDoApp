@@ -176,6 +176,13 @@
     }
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField*)aTextField
+{
+    [self addToDoButtonPressed:nil];
+    [aTextField resignFirstResponder];
+    return YES;
+}
+
 - (void)dismissKeyboard {
     [self.addToDoTextField resignFirstResponder];
 }

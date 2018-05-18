@@ -14,7 +14,6 @@
 		CC655BBA20ADE3BA0010336C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC655BB820ADE3BA0010336C /* LaunchScreen.storyboard */; };
 		CC655BBD20ADE3BA0010336C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CC655BBC20ADE3BA0010336C /* main.m */; };
 		CC655BC620ADEB8C0010336C /* ToDoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC655BC420ADEB8C0010336C /* ToDoListViewController.m */; };
-		CC655BC720ADEB8C0010336C /* ToDoListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC655BC520ADEB8C0010336C /* ToDoListViewController.xib */; };
 		CC655BCB20ADEBA80010336C /* MyListsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC655BC920ADEBA80010336C /* MyListsViewController.m */; };
 		CC655BCC20ADEBA80010336C /* MyListsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC655BCA20ADEBA80010336C /* MyListsViewController.xib */; };
 		CC655BD120ADF09D0010336C /* ToDoItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC655BCF20ADF09D0010336C /* ToDoItemTableViewCell.m */; };
@@ -57,7 +56,6 @@
 		CC655BBC20ADE3BA0010336C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CC655BC320ADEB8C0010336C /* ToDoListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToDoListViewController.h; sourceTree = "<group>"; };
 		CC655BC420ADEB8C0010336C /* ToDoListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToDoListViewController.m; sourceTree = "<group>"; };
-		CC655BC520ADEB8C0010336C /* ToDoListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToDoListViewController.xib; sourceTree = "<group>"; };
 		CC655BC820ADEBA80010336C /* MyListsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyListsViewController.h; sourceTree = "<group>"; };
 		CC655BC920ADEBA80010336C /* MyListsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyListsViewController.m; sourceTree = "<group>"; };
 		CC655BCA20ADEBA80010336C /* MyListsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyListsViewController.xib; sourceTree = "<group>"; };
@@ -151,7 +149,6 @@
 			children = (
 				CC655BC320ADEB8C0010336C /* ToDoListViewController.h */,
 				CC655BC420ADEB8C0010336C /* ToDoListViewController.m */,
-				CC655BC520ADEB8C0010336C /* ToDoListViewController.xib */,
 				CC655BCE20ADF09D0010336C /* ToDoItemTableViewCell.h */,
 				CC655BCF20ADF09D0010336C /* ToDoItemTableViewCell.m */,
 				CC655BD020ADF09D0010336C /* ToDoItemTableViewCell.xib */,
@@ -262,7 +259,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC655BC720ADEB8C0010336C /* ToDoListViewController.xib in Resources */,
 				CC655BFF20AE27670010336C /* Raleway-Bold.ttf in Resources */,
 				CC655BBA20ADE3BA0010336C /* LaunchScreen.storyboard in Resources */,
 				CC655BCC20ADEBA80010336C /* MyListsViewController.xib in Resources */,
