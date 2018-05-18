@@ -87,7 +87,7 @@
                                         <rect key="frame" x="24" y="14.5" width="281" height="31"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="Raleway-ExtraLight" family="Raleway" pointSize="26"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z9V-c1-PXS">
                                         <rect key="frame" x="317" y="13" width="38" height="34"/>

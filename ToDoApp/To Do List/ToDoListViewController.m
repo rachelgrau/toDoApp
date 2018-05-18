@@ -134,6 +134,7 @@
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ToDoItemTableViewCell" owner:self options:nil];
         cell = (ToDoItemTableViewCell *)[nib objectAtIndex:0];
     }
+    cell.delegate = self;
     ToDoItem *itemToDisplay = [self.myToDos objectAtIndex:indexPath.row];
     [cell setUpCellWithToDoItem:itemToDisplay];
     return cell;
@@ -144,6 +145,7 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [self.myToDos removeObjectAtIndex:indexPath.row];
         [self.toDosTableView reloadData];
+        [self saveToDos];
     }
 }
 
@@ -176,6 +178,11 @@
 
 - (void)dismissKeyboard {
     [self.addToDoTextField resignFirstResponder];
+}
+
+#pragma mark – ToDoItemCell Delegate
+- (void)markedItemAsComplete:(ToDoItem *)toDoItem {
+    [self saveToDos];
 }
 
 #pragma mark – ToDoItem Delegate

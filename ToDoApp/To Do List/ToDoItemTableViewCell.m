@@ -51,6 +51,10 @@
         [self.completeItemButton setBackgroundImage:[UIImage imageNamed:CHECKED_CIRLCE] forState:UIControlStateNormal];
         self.toDoItem.isCompleted = YES;
     }
+    
+    if ([self.delegate respondsToSelector:@selector(markedItemAsComplete:)]) {
+        [self.delegate markedItemAsComplete:self.toDoItem];
+    }
 }
 
 
