@@ -71,6 +71,7 @@
     self.titleTextView.font = titleTextViewFont;
     self.titleTextView.delegate = self;
     self.titleTextView.text = self.toDoItem.toDoTitle;
+    self.titleTextView.returnKeyType = UIReturnKeyDone;
     [self.titleTextView setTextContainerInset:UIEdgeInsetsZero];
     self.titleTextView.textContainer.lineFragmentPadding = 0; // to remove left padding
     [self.view addSubview:self.titleTextView];
@@ -103,6 +104,7 @@
     self.descriptionTextView = [[UITextView alloc] initWithFrame:CGRectMake(LEFT_MARGIN, startingY, SCREEN_WIDTH - (2 * LEFT_MARGIN), descriptionViewHeight)];
     self.descriptionTextView.font = [UIFont fontWithName:@"Raleway-ExtraLight" size:20];
     self.descriptionTextView.text = toDoDescription;
+    self.descriptionTextView.returnKeyType = UIReturnKeyDone;
     self.descriptionTextView.delegate = self;
     [self.descriptionTextView setTextContainerInset:UIEdgeInsetsZero];
     self.descriptionTextView.textContainer.lineFragmentPadding = 0; // to remove left padding
@@ -226,7 +228,6 @@
 
 /* If they end editing a textview, check if they left it empty. If so, display the placeholder. If the title is empty, disable the save button. */
 - (void)textViewDidEndEditing:(UITextView *)textView {
-
     if (textView.text.length == 0) {
         if (textView == self.titleTextView) {
             textView.text = TO_DO_TITLE_PLACEHOLDER;
@@ -241,6 +242,11 @@
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if ([text isEqualToString:@"\n"]) {
+        /* Means they hit the done button */
+        [textView resignFirstResponder];
+        return NO;
+    }
     if (textView == self.titleTextView) {
         if ([textView.text isEqualToString:TO_DO_TITLE_PLACEHOLDER]) {
             self.saveButton.enabled = NO;
