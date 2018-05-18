@@ -116,7 +116,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     if (tableView == self.toDosTableView) {
-        return 1;
+        return 2;
     }
     return 0;
 }
@@ -161,6 +161,23 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return TO_DO_TABLE_VIEW_CELL_HEIGHT;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 18)];
+    /* Create custom view to display section header... */
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(24, 5, tableView.frame.size.width, 18)];
+    label.font = [UIFont fontWithName:@"Raleway-Bold" size:12.0];
+    label.textColor = [UIColor whiteColor];
+    if (section == 0) {
+        label.text = @"TO DO";
+    } else {
+        label.text = @"COMPLETED";
+    }
+    [view addSubview:label];
+    [view setBackgroundColor:TO_DO_APP_LIGHTEST_GRAY];
+    return view;
 }
 
 #pragma mark – TextField Delegate
