@@ -1,5 +1,5 @@
 # To-do App
-An iOS app that lets add to-dos to a to-do list. 
+An iOS app that lets add to-dos to a to-do list. Written in Objective-C. 
 
 <b>FEATURES:</b>
 - Add to-dos (name, description, and priority), edit to-dos, delete to-dos.
