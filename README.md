@@ -22,7 +22,7 @@ Models
 - <b>ToDoItem.[h/m]</b>: this class represents a To-do object. It stores the to-do's name, description, priority, and whether it's completed. For now we store a user's to-dos on their phone (not a backend, not Core Data) with NSUserDefaults (temporary hack).
 
 <b>DECISIONS I MADE ALONG THE WAY:</b>
-- Hacky fix for data persistence: I'm storing the user's to-dos in NSUserDefaults. This is hacky and not ideal (NSUserDefaults meant to store state, not things like objects). Should use a backend database or Core Data.
+- Hacky fix for data persistence: I'm storing the user's to-dos in NSUserDefaults. This is hacky and not ideal (NSUserDefaults meant to store state, not things like objects). Should use a backend database or Core Data. I just did this in the interest of time. 
 - Design: since it's a to-do app, I figure users will be using it to feel organized. So, I focused on making the design look very clean, minimalistic, and organized. I use blue as the action color (associated with stability, trust, cleanliness) and shades of gray everywhere else.
 - Design: at first I had the first screen as a to-do list with an add button at the top. The add button took you to a new screen where you'd fill out the title of the to-do, a description, and whether it was high priority (very similar to how the ToDoItemViewController turned out). However, I had a couple friends try the app and found that they just wanted to be able to add to-dos really quickly. So, I changed the design to have a textfield up top on the very first screen that allows users to add to-dos really quickly (and then edit them if they want to add description/priority). 
 - I designed all the (very simple) graphics: check mark, priority icon, app icon.
