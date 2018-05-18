@@ -32,7 +32,8 @@
 #define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
 
 /* USER DEFAULT KEYS */
-#define USER_DEFAULTS_TO_DOS_KEY @"ToDosKey"
+#define USER_DEFAULTS_OUTSTANDING_TO_DOS_KEY @"OutstandingToDosKey"
+#define USER_DEFAULTS_COMPLETED_TO_DOS_KEY @"CompletedToDosKey"
 #define USER_DEFAULTS_TO_DO_TITLE_KEY @"ToDoTitleKey"
 #define USER_DEFAULTS_TO_DO_DESCRIPTION_KEY @"ToDoDescriptionKey"
 #define USER_DEFAULTS_TO_DO_IS_COMPLETED_KEY @"ToDoIsCompletedKey"

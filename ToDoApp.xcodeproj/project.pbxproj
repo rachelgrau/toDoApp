@@ -41,6 +41,8 @@
 		CC655C0620AE27670010336C /* Raleway-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CC655BF320AE27670010336C /* Raleway-Italic.ttf */; };
 		CC655C0720AE27670010336C /* Raleway-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CC655BF420AE27670010336C /* Raleway-LightItalic.ttf */; };
 		CC655C0A20AE38AB0010336C /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CC655C0920AE38AB0010336C /* Utilities.m */; };
+		CC655C0E20AE7A090010336C /* NoMoreToDosTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC655C0C20AE7A090010336C /* NoMoreToDosTableViewCell.m */; };
+		CC655C0F20AE7A090010336C /* NoMoreToDosTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC655C0D20AE7A090010336C /* NoMoreToDosTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +91,9 @@
 		CC655BF420AE27670010336C /* Raleway-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-LightItalic.ttf"; sourceTree = "<group>"; };
 		CC655C0820AE38AB0010336C /* Utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
 		CC655C0920AE38AB0010336C /* Utilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
+		CC655C0B20AE7A090010336C /* NoMoreToDosTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoMoreToDosTableViewCell.h; sourceTree = "<group>"; };
+		CC655C0C20AE7A090010336C /* NoMoreToDosTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoMoreToDosTableViewCell.m; sourceTree = "<group>"; };
+		CC655C0D20AE7A090010336C /* NoMoreToDosTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoMoreToDosTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +157,9 @@
 				CC655BCE20ADF09D0010336C /* ToDoItemTableViewCell.h */,
 				CC655BCF20ADF09D0010336C /* ToDoItemTableViewCell.m */,
 				CC655BD020ADF09D0010336C /* ToDoItemTableViewCell.xib */,
+				CC655C0B20AE7A090010336C /* NoMoreToDosTableViewCell.h */,
+				CC655C0C20AE7A090010336C /* NoMoreToDosTableViewCell.m */,
+				CC655C0D20AE7A090010336C /* NoMoreToDosTableViewCell.xib */,
 			);
 			path = "To Do List";
 			sourceTree = "<group>";
@@ -264,6 +272,7 @@
 				CC655BCC20ADEBA80010336C /* MyListsViewController.xib in Resources */,
 				CC655BFB20AE27670010336C /* Raleway-Regular.ttf in Resources */,
 				CC655C0020AE27670010336C /* Raleway-Thin.ttf in Resources */,
+				CC655C0F20AE7A090010336C /* NoMoreToDosTableViewCell.xib in Resources */,
 				CC655BF620AE27670010336C /* Raleway-ExtraLightItalic.ttf in Resources */,
 				CC655C0220AE27670010336C /* Raleway-Medium.ttf in Resources */,
 				CC655BB720ADE3BA0010336C /* Assets.xcassets in Resources */,
@@ -295,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC655BC620ADEB8C0010336C /* ToDoListViewController.m in Sources */,
+				CC655C0E20AE7A090010336C /* NoMoreToDosTableViewCell.m in Sources */,
 				CC655BB220ADE3BA0010336C /* ViewController.m in Sources */,
 				CC655BD620ADF16C0010336C /* ToDoItem.m in Sources */,
 				CC655C0A20AE38AB0010336C /* Utilities.m in Sources */,

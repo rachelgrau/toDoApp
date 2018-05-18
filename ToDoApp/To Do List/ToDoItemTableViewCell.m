@@ -1,7 +1,7 @@
 /**
  * File: ToDoItemTableViewCell.m
  * ------------------------------
- * A Table View Cell that displays one to do list item. Displays a description and a button that allows the user to mark the cell as completed.
+ * A Table View Cell that displays one to-do list item. Displays a description and a button that allows the user to mark the cell as completed.
  */
 
 //  Created by Rachel on 17/05/2018.
@@ -27,11 +27,11 @@
     // Configure the view for the selected state
 }
 
-/* Given a ToDoItem, updates the views on this cell with the information stored in |toDoItem|. Updates the description label to display the description of the to do item and updates the check mark image to be either checked or unchecked depending on whether |toDoItem| is completed. */
+/* Given a ToDoItem, updates the views on this cell with the information stored in |toDoItem|. Updates the description label to display the description of the to-do item and updates the check mark image to be either checked or unchecked depending on whether |toDoItem| is completed. */
 - (void)setUpCellWithToDoItem:(ToDoItem *)toDoItem {
     self.toDoItem = toDoItem;
     
-    /* Update description of to do item. */
+    /* Update description of to-do item. */
     self.toDoDescriptionLabel.text = toDoItem.toDoTitle;
 
     /* Update check mark depending on whether item has been completed. */
@@ -41,7 +41,7 @@
         [self.completeItemButton setBackgroundImage:[UIImage imageNamed:UNCHECKED_CIRCLE] forState:UIControlStateNormal];
     }
     
-    /* Display the urgent icon ONLY if the to do item is high priority. */
+    /* Display the urgent icon ONLY if the to-do item is high priority. */
     if (toDoItem.isHighPriority) {
         self.urgentIcon.hidden = NO;
     } else {

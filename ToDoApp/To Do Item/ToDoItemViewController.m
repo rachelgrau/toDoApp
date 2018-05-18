@@ -1,7 +1,7 @@
 /**
  * File: ToDoItemViewController.m
  * ------------------------------
- * Displays a single to do item: its title, details, and an option to mark it as urgent.
+ * Displays a single to-do item: its title, details, and an option to mark it as urgent.
  */
 
 //  Created by Rachel on 17/05/2018.
@@ -48,7 +48,7 @@
     const int VERTICAL_SPACE_BETWEEN_SECTIONS = 48;
     int startingY = self.backButton.frame.origin.y + self.backButton.frame.size.height + 40; /* Will be used as the y origin for every view. */
     
-    /* To do title */
+    /* to-do title */
     if (self.titleLabel) {
         [self.titleLabel removeFromSuperview];
     }
@@ -61,7 +61,7 @@
     startingY += self.titleLabel.frame.size.height;
     startingY += VERTICAL_SPACE_BELOW_TITLE;
     
-    /* To do title text view, where the user can edit the title of their to do */
+    /* to-do title text view, where the user can edit the title of their to-do */
     if (self.titleTextView) {
         [self.titleTextView removeFromSuperview];
     }
@@ -79,7 +79,7 @@
     startingY += self.titleTextView.frame.size.height;
     startingY += VERTICAL_SPACE_BETWEEN_SECTIONS;
     
-    /* To do description title */
+    /* to-do description title */
     if (self.descriptionLabel) {
         [self.descriptionLabel removeFromSuperview];
     }
@@ -91,7 +91,7 @@
     startingY += self.descriptionLabel.frame.size.height;
     startingY += VERTICAL_SPACE_BELOW_TITLE;
     
-    /* To do description text view, where the user can edit the title of their to do */
+    /* to-do description text view, where the user can edit the title of their to-do */
     if (self.descriptionTextView) {
         [self.descriptionTextView removeFromSuperview];
     }
@@ -113,7 +113,7 @@
     startingY += self.descriptionTextView.frame.size.height;
     startingY += VERTICAL_SPACE_BETWEEN_SECTIONS;
     
-    /* To do priority title */
+    /* to-do priority title */
     if (self.priorityTitle) {
         [self.priorityTitle removeFromSuperview];
     }
@@ -125,7 +125,7 @@
     startingY += self.priorityTitle.frame.size.height;
     startingY += VERTICAL_SPACE_BELOW_TITLE;
     
-    /* To do priority description */
+    /* to-do priority description */
     if (self.priorityDescription) {
         [self.priorityDescription removeFromSuperview];
     }
@@ -180,7 +180,7 @@
 
 - (IBAction)saveButtonPressed:(id)sender {
     if ([self.delegate respondsToSelector:@selector(editedToDoItem:)]) {
-        /* Update the to do item and pass it to our delegate. */
+        /* Update the to-do item and pass it to our delegate. */
         self.toDoItem.toDoTitle = self.titleTextView.text;
         if ([self.descriptionTextView.text isEqualToString:TO_DO_DESCRIPTION_PLACEHOLDER]) {
             self.toDoItem.toDoDescription = @"";
