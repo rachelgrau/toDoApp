@@ -13,6 +13,9 @@
         <array key="Raleway-Black.ttf">
             <string>Raleway-Black</string>
         </array>
+        <array key="Raleway-Bold.ttf">
+            <string>Raleway-Bold</string>
+        </array>
         <array key="Raleway-ExtraLight.ttf">
             <string>Raleway-ExtraLight</string>
         </array>
@@ -103,6 +106,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="z9V-c1-PXS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gzJ-uj-fAX" secondAttribute="leading" constant="20" symbolic="YES" id="AKy-P6-gsP"/>
                                     <constraint firstAttribute="trailing" secondItem="z9V-c1-PXS" secondAttribute="trailing" constant="20" id="MiE-CJ-m7N"/>
                                     <constraint firstAttribute="height" constant="60" id="QKZ-M0-NTy"/>
                                     <constraint firstAttribute="trailing" secondItem="ddj-2N-fm1" secondAttribute="trailing" constant="70" id="crD-43-QVQ"/>
@@ -111,12 +115,26 @@
                                     <constraint firstItem="ddj-2N-fm1" firstAttribute="leading" secondItem="gzJ-uj-fAX" secondAttribute="leading" constant="24" id="w0H-9G-Ctm"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lPS-5U-nK7">
+                                <rect key="frame" x="127.5" y="592" width="120" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="Gbr-T3-Nsw"/>
+                                    <constraint firstAttribute="height" constant="35" id="GhO-0d-HIK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Raleway-Bold" family="Raleway" pointSize="12"/>
+                                <state key="normal" title="REORDER"/>
+                                <connections>
+                                    <action selector="reorderButtonPressed:" destination="DJV-aP-tfg" eventType="touchUpInside" id="91A-Bt-k10"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="5I1-Oz-uBB" firstAttribute="leading" secondItem="lXW-eT-eNa" secondAttribute="leading" id="10E-Ay-gvd"/>
                             <constraint firstItem="lXW-eT-eNa" firstAttribute="bottom" secondItem="5I1-Oz-uBB" secondAttribute="bottom" id="4xR-o9-Qxn"/>
+                            <constraint firstItem="lPS-5U-nK7" firstAttribute="centerX" secondItem="lXW-eT-eNa" secondAttribute="centerX" id="58M-Se-F0h"/>
                             <constraint firstItem="lXW-eT-eNa" firstAttribute="leading" secondItem="gzJ-uj-fAX" secondAttribute="leading" id="EIw-Kr-QYl"/>
+                            <constraint firstItem="lXW-eT-eNa" firstAttribute="bottom" secondItem="lPS-5U-nK7" secondAttribute="bottom" constant="40" id="cSK-VM-jtg"/>
                             <constraint firstItem="5I1-Oz-uBB" firstAttribute="top" secondItem="gzJ-uj-fAX" secondAttribute="bottom" id="sdj-Bo-1zW"/>
                             <constraint firstItem="lXW-eT-eNa" firstAttribute="trailing" secondItem="gzJ-uj-fAX" secondAttribute="trailing" id="tvA-90-HHx"/>
                             <constraint firstItem="gzJ-uj-fAX" firstAttribute="top" secondItem="lXW-eT-eNa" secondAttribute="top" id="wV8-tf-dTE"/>
@@ -129,6 +147,7 @@
                     <connections>
                         <outlet property="addToDoButton" destination="z9V-c1-PXS" id="ou3-5g-ahS"/>
                         <outlet property="addToDoTextField" destination="ddj-2N-fm1" id="B33-xe-uim"/>
+                        <outlet property="reorderCellsButton" destination="lPS-5U-nK7" id="FVo-XJ-ZUu"/>
                         <outlet property="toDosTableView" destination="5I1-Oz-uBB" id="kuT-Ls-0s9"/>
                     </connections>
                 </viewController>

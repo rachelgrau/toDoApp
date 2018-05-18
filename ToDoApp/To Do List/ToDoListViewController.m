@@ -23,6 +23,7 @@
 @property (strong, nonatomic) IBOutlet UITableView *toDosTableView;
 @property (strong, nonatomic) IBOutlet UITextField *addToDoTextField;
 @property (strong, nonatomic) IBOutlet UIButton *addToDoButton;
+@property (strong, nonatomic) IBOutlet UIButton *reorderCellsButton;
 
 /* MODELS */
 @property NSMutableArray *outstandingTodos; /* to-dos that haven't been completed. */
@@ -59,6 +60,9 @@
     /* This line makes it so that we don't have separator lines showing up on blank cells. */
     self.toDosTableView.tableFooterView = [UIView new];
     
+    /* Not editing to start, but if they click re-order we'll start editing. */
+    self.toDosTableView.editing = NO;
+    
     /* Add a tap gesture recognizer so that when they're typing in a textfield they can hide the keyboard by tapping outside of it.  */
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self
@@ -68,6 +72,10 @@
     
     /* This line gets rid of a bit of padding at the top of the table view.. */
     self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    /* Set up re-order button */
+    self.reorderCellsButton.layer.cornerRadius = 16;
+    self.reorderCellsButton.titleLabel.font = [UIFont fontWithName:@"Raleway-Bold" size:16.0];
     
     /* Initialize to-do list model. */
     [self loadToDos];
@@ -111,6 +119,8 @@
     [self.addToDoButton setTitleColor:TO_DO_APP_BLUE forState:UIControlStateNormal];
     self.addToDoTextField.textColor = TO_DO_APP_TEXT_GRAY;
     self.addToDoTextField.tintColor = TO_DO_APP_BLUE;
+    self.reorderCellsButton.backgroundColor = TO_DO_APP_BLUE;
+    [self.reorderCellsButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -129,6 +139,17 @@
         self.addToDoTextField.text = @"";
         self.addToDoButton.hidden = YES;
         [self saveToDos]; /* Save to user defaults. Here we would ideally only save the individual reminder that was added (in an API call). */
+    }
+}
+
+/* If the user is editing, then they press this button to be DONE editing (stop editing and change the button back to "re-order"). If the user isn't editing, then they want to edit, so start editing the table view and change this button to say "done" */
+- (IBAction)reorderButtonPressed:(id)sender {
+    if (self.toDosTableView.isEditing) {
+        self.toDosTableView.editing = NO;
+        [self.reorderCellsButton setTitle:@"REORDER" forState:UIControlStateNormal];
+    } else {
+        self.toDosTableView.editing = YES;
+        [self.reorderCellsButton setTitle:@"DONE" forState:UIControlStateNormal];
     }
 }
 
@@ -252,6 +273,61 @@
     [view setBackgroundColor:TO_DO_APP_LIGHTEST_GRAY];
     return view;
 }
+
+/* Moving table view cells */
+
+//- (UITableViewCellEditingStyle)tableView:(UITableView *)aTableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return UITableViewCellEditingStyleNone;
+//}
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ((indexPath.section == OUTSTANDING_TO_DOS_SECTION) && (self.outstandingTodos.count == 0)) {
+        /* The only non-movable cell is the one that says "You're all done with your to-dos!" */
+        return NO;
+    }
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+    ToDoItem *movedItem;
+    if (fromIndexPath.section == OUTSTANDING_TO_DOS_SECTION) {
+        movedItem = [self.outstandingTodos objectAtIndex:fromIndexPath.row];
+        [self.outstandingTodos removeObjectAtIndex:fromIndexPath.row];
+        if (toIndexPath.section == OUTSTANDING_TO_DOS_SECTION) {
+            [self.outstandingTodos insertObject:movedItem atIndex:toIndexPath.row];
+        } else {
+            /* They're moving an incomplete to-do to the completed to-dos section. Update the to-do item as completed. */
+            movedItem.isCompleted = YES;
+            [self.completedTodos insertObject:movedItem atIndex:toIndexPath.row];
+            [self.toDosTableView reloadData];
+        }
+    } else if (fromIndexPath.section == COMPLETED_TO_DOS_SECTION) {
+        movedItem = [self.completedTodos objectAtIndex:fromIndexPath.row];
+        [self.completedTodos removeObjectAtIndex:fromIndexPath.row];
+        if (toIndexPath.section == COMPLETED_TO_DOS_SECTION) {
+            [self.completedTodos insertObject:movedItem atIndex:toIndexPath.row];
+        } else {
+            /* They're moving a completed to-do to the outstanding to-dos section. Update the to-do item as incomplete. */
+            movedItem.isCompleted = NO;
+            if (self.outstandingTodos.count == 0) {
+                /* Edge case: there are currently no outstanding to-dos, but there IS a cell there (the one that says "No more to-dos!" ... so can't just insert the movedItem at indexPath.row because the array is empty. */
+                [self.outstandingTodos addObject:movedItem];
+            } else {
+                [self.outstandingTodos insertObject:movedItem atIndex:toIndexPath.row];
+            }
+            [self.toDosTableView reloadData];
+        }
+    }
+    [self saveToDos];
+}
+
+//- (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath {
+//    if ([proposedDestinationIndexPath row] < [self.itemArray count]) {
+//        return proposedDestinationIndexPath;
+//    }
+//    NSIndexPath *betterIndexPath = [NSIndexPath indexPathForRow:[self.itemArray count]-1 inSection:0];
+//    return betterIndexPath;
+//}
 
 #pragma mark – TextField Delegate
 
