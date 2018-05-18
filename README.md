@@ -2,7 +2,7 @@
 An iOS app that lets add to-dos to a to-do list. Written in Objective-C. 
 
 <b>TO RUN APP:</b>
-- Click on "Clone or download" --> "download ZIP"
+- Click on "Clone or download" --> "Download ZIP"
 - Open toDoApp-master --> toDoApp.xcodeproj in XCode
 - Run on simulator or on your own device (note that if you have an iPhone X, I've noted a couple problems on iPhoneX that I'd like to improve) 
 
