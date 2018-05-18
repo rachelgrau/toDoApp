@@ -8,14 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		CC655BAF20ADE3BA0010336C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CC655BAE20ADE3BA0010336C /* AppDelegate.m */; };
-		CC655BB220ADE3BA0010336C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC655BB120ADE3BA0010336C /* ViewController.m */; };
 		CC655BB520ADE3BA0010336C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC655BB320ADE3BA0010336C /* Main.storyboard */; };
 		CC655BB720ADE3BA0010336C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC655BB620ADE3BA0010336C /* Assets.xcassets */; };
 		CC655BBA20ADE3BA0010336C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC655BB820ADE3BA0010336C /* LaunchScreen.storyboard */; };
 		CC655BBD20ADE3BA0010336C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CC655BBC20ADE3BA0010336C /* main.m */; };
 		CC655BC620ADEB8C0010336C /* ToDoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC655BC420ADEB8C0010336C /* ToDoListViewController.m */; };
-		CC655BCB20ADEBA80010336C /* MyListsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC655BC920ADEBA80010336C /* MyListsViewController.m */; };
-		CC655BCC20ADEBA80010336C /* MyListsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC655BCA20ADEBA80010336C /* MyListsViewController.xib */; };
 		CC655BD120ADF09D0010336C /* ToDoItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC655BCF20ADF09D0010336C /* ToDoItemTableViewCell.m */; };
 		CC655BD220ADF09D0010336C /* ToDoItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC655BD020ADF09D0010336C /* ToDoItemTableViewCell.xib */; };
 		CC655BD620ADF16C0010336C /* ToDoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CC655BD520ADF16C0010336C /* ToDoItem.m */; };
@@ -49,8 +46,6 @@
 		CC655BAA20ADE3B90010336C /* ToDoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC655BAD20ADE3BA0010336C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CC655BAE20ADE3BA0010336C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		CC655BB020ADE3BA0010336C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		CC655BB120ADE3BA0010336C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		CC655BB420ADE3BA0010336C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CC655BB620ADE3BA0010336C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CC655BB920ADE3BA0010336C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -58,9 +53,6 @@
 		CC655BBC20ADE3BA0010336C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CC655BC320ADEB8C0010336C /* ToDoListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToDoListViewController.h; sourceTree = "<group>"; };
 		CC655BC420ADEB8C0010336C /* ToDoListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToDoListViewController.m; sourceTree = "<group>"; };
-		CC655BC820ADEBA80010336C /* MyListsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyListsViewController.h; sourceTree = "<group>"; };
-		CC655BC920ADEBA80010336C /* MyListsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyListsViewController.m; sourceTree = "<group>"; };
-		CC655BCA20ADEBA80010336C /* MyListsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyListsViewController.xib; sourceTree = "<group>"; };
 		CC655BCE20ADF09D0010336C /* ToDoItemTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToDoItemTableViewCell.h; sourceTree = "<group>"; };
 		CC655BCF20ADF09D0010336C /* ToDoItemTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToDoItemTableViewCell.m; sourceTree = "<group>"; };
 		CC655BD020ADF09D0010336C /* ToDoItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToDoItemTableViewCell.xib; sourceTree = "<group>"; };
@@ -135,16 +127,11 @@
 				CC655BE120AE27530010336C /* Font */,
 				CC655BAD20ADE3BA0010336C /* AppDelegate.h */,
 				CC655BAE20ADE3BA0010336C /* AppDelegate.m */,
-				CC655BB020ADE3BA0010336C /* ViewController.h */,
-				CC655BB120ADE3BA0010336C /* ViewController.m */,
 				CC655BB320ADE3BA0010336C /* Main.storyboard */,
 				CC655BB620ADE3BA0010336C /* Assets.xcassets */,
 				CC655BB820ADE3BA0010336C /* LaunchScreen.storyboard */,
 				CC655BBB20ADE3BA0010336C /* Info.plist */,
 				CC655BBC20ADE3BA0010336C /* main.m */,
-				CC655BC820ADEBA80010336C /* MyListsViewController.h */,
-				CC655BC920ADEBA80010336C /* MyListsViewController.m */,
-				CC655BCA20ADEBA80010336C /* MyListsViewController.xib */,
 			);
 			path = ToDoApp;
 			sourceTree = "<group>";
@@ -269,7 +256,6 @@
 			files = (
 				CC655BFF20AE27670010336C /* Raleway-Bold.ttf in Resources */,
 				CC655BBA20ADE3BA0010336C /* LaunchScreen.storyboard in Resources */,
-				CC655BCC20ADEBA80010336C /* MyListsViewController.xib in Resources */,
 				CC655BFB20AE27670010336C /* Raleway-Regular.ttf in Resources */,
 				CC655C0020AE27670010336C /* Raleway-Thin.ttf in Resources */,
 				CC655C0F20AE7A090010336C /* NoMoreToDosTableViewCell.xib in Resources */,
@@ -305,13 +291,11 @@
 			files = (
 				CC655BC620ADEB8C0010336C /* ToDoListViewController.m in Sources */,
 				CC655C0E20AE7A090010336C /* NoMoreToDosTableViewCell.m in Sources */,
-				CC655BB220ADE3BA0010336C /* ViewController.m in Sources */,
 				CC655BD620ADF16C0010336C /* ToDoItem.m in Sources */,
 				CC655C0A20AE38AB0010336C /* Utilities.m in Sources */,
 				CC655BD120ADF09D0010336C /* ToDoItemTableViewCell.m in Sources */,
 				CC655BBD20ADE3BA0010336C /* main.m in Sources */,
 				CC655BAF20ADE3BA0010336C /* AppDelegate.m in Sources */,
-				CC655BCB20ADEBA80010336C /* MyListsViewController.m in Sources */,
 				CC655BDF20AE10960010336C /* ToDoItemViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

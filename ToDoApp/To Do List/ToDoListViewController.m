@@ -214,15 +214,18 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    self.selectedIndexPath = indexPath;
+    [self.toDosTableView deselectRowAtIndexPath:indexPath animated:YES];
     ToDoItemViewController *toDoItemViewController = [[ToDoItemViewController alloc] initWithNibName:@"ToDoItemViewController" bundle:nil];
     if (indexPath.section == OUTSTANDING_TO_DOS_SECTION) {
         if (self.outstandingTodos.count > 0) {
             toDoItemViewController.toDoItem = [self.outstandingTodos objectAtIndex:indexPath.row];
+        } else {
+            return;
         }
     } else if (indexPath.section == COMPLETED_TO_DOS_SECTION) {
         toDoItemViewController.toDoItem = [self.completedTodos objectAtIndex:indexPath.row];
     }
+    self.selectedIndexPath = indexPath;
     toDoItemViewController.delegate = self;
     [self.toDosTableView deselectRowAtIndexPath:indexPath animated:YES];
     [self.navigationController pushViewController:toDoItemViewController animated:YES];
