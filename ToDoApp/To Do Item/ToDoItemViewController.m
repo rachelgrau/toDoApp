@@ -14,6 +14,9 @@
 @interface ToDoItemViewController ()
 
 /* VIEWS */
+@property UIScrollView *scrollView;
+@property UIView *contentView;
+
 @property (strong, nonatomic) IBOutlet UIButton *backButton;
 @property UILabel *titleLabel;
 @property UITextView *titleTextView;
@@ -48,6 +51,11 @@
     const int VERTICAL_SPACE_BETWEEN_SECTIONS = 48;
     int startingY = self.backButton.frame.origin.y + self.backButton.frame.size.height + 40; /* Will be used as the y origin for every view. */
     
+    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - self.saveButton.frame.size.height)];
+    self.scrollView.bounces = NO;
+    self.contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 20000)];
+    [self.scrollView addSubview:self.contentView];
+    
     /* to-do title */
     if (self.titleLabel) {
         [self.titleLabel removeFromSuperview];
@@ -56,7 +64,7 @@
     self.titleLabel.text = @"TITLE";
     self.titleLabel.font = [UIFont fontWithName:@"Raleway-Bold" size:10.0];
     [self.titleLabel sizeToFit];
-    [self.view addSubview:self.titleLabel];
+    [self.contentView addSubview:self.titleLabel];
     
     startingY += self.titleLabel.frame.size.height;
     startingY += VERTICAL_SPACE_BELOW_TITLE;
@@ -70,11 +78,12 @@
     self.titleTextView = [[UITextView alloc] initWithFrame:CGRectMake(LEFT_MARGIN, startingY, SCREEN_WIDTH - (2 * LEFT_MARGIN), textViewHeight)];
     self.titleTextView.font = titleTextViewFont;
     self.titleTextView.delegate = self;
+    self.titleTextView.bounces = NO;
     self.titleTextView.text = self.toDoItem.toDoTitle;
     self.titleTextView.returnKeyType = UIReturnKeyDone;
     [self.titleTextView setTextContainerInset:UIEdgeInsetsZero];
     self.titleTextView.textContainer.lineFragmentPadding = 0; // to remove left padding
-    [self.view addSubview:self.titleTextView];
+    [self.contentView addSubview:self.titleTextView];
     
     startingY += self.titleTextView.frame.size.height;
     startingY += VERTICAL_SPACE_BETWEEN_SECTIONS;
@@ -87,7 +96,7 @@
     self.descriptionLabel.text = @"DESCRIPTION";
     self.descriptionLabel.font = [UIFont fontWithName:@"Raleway-Bold" size:10.0];
     [self.descriptionLabel sizeToFit];
-    [self.view addSubview:self.descriptionLabel];
+    [self.contentView addSubview:self.descriptionLabel];
     startingY += self.descriptionLabel.frame.size.height;
     startingY += VERTICAL_SPACE_BELOW_TITLE;
     
@@ -104,11 +113,12 @@
     self.descriptionTextView = [[UITextView alloc] initWithFrame:CGRectMake(LEFT_MARGIN, startingY, SCREEN_WIDTH - (2 * LEFT_MARGIN), descriptionViewHeight)];
     self.descriptionTextView.font = [UIFont fontWithName:@"Raleway-ExtraLight" size:20];
     self.descriptionTextView.text = toDoDescription;
+    self.descriptionTextView.bounces = NO;
     self.descriptionTextView.returnKeyType = UIReturnKeyDone;
     self.descriptionTextView.delegate = self;
     [self.descriptionTextView setTextContainerInset:UIEdgeInsetsZero];
     self.descriptionTextView.textContainer.lineFragmentPadding = 0; // to remove left padding
-    [self.view addSubview:self.descriptionTextView];
+    [self.contentView addSubview:self.descriptionTextView];
     
     startingY += self.descriptionTextView.frame.size.height;
     startingY += VERTICAL_SPACE_BETWEEN_SECTIONS;
@@ -121,7 +131,7 @@
     self.priorityTitle.text = @"PRIORITY";
     self.priorityTitle.font = [UIFont fontWithName:@"Raleway-Bold" size:10.0];
     [self.priorityTitle sizeToFit];
-    [self.view addSubview:self.priorityTitle];
+    [self.contentView addSubview:self.priorityTitle];
     startingY += self.priorityTitle.frame.size.height;
     startingY += VERTICAL_SPACE_BELOW_TITLE;
     
@@ -133,7 +143,9 @@
     self.priorityDescription.text = @"Mark as high priority?";
     self.priorityDescription.font = [UIFont fontWithName:@"Raleway-ExtraLight" size:20];
     [self.priorityDescription sizeToFit];
-    [self.view addSubview:self.priorityDescription];
+    [self.contentView addSubview:self.priorityDescription];
+    startingY += self.priorityDescription.frame.size.height;
+    startingY += VERTICAL_SPACE_BETWEEN_SECTIONS;
     
     /* High priority switch */
     if (self.highPrioritySwitch) {
@@ -149,7 +161,14 @@
     CGRect prioritySwitchFrame = self.highPrioritySwitch.frame;
     prioritySwitchFrame.origin.x = SCREEN_WIDTH - LEFT_MARGIN - prioritySwitchFrame.size.width;
     self.highPrioritySwitch.frame = prioritySwitchFrame;
-    [self.view addSubview:self.highPrioritySwitch];
+    [self.contentView addSubview:self.highPrioritySwitch];
+    
+    self.scrollView.contentSize = CGSizeMake(self.contentView.frame.size.width, startingY + 20);
+    self.scrollView.bounces = NO;
+    [self.view addSubview:self.scrollView];
+    [self.view bringSubviewToFront:self.saveButton];
+    [self.view bringSubviewToFront:self.scrollView];
+    self.scrollView.backgroundColor = [UIColor clearColor];
     
     [self setUpColors];
 }

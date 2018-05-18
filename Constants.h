@@ -30,6 +30,7 @@
 
 /* MISC */
 #define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
+#define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
 
 /* USER DEFAULT KEYS */
 #define USER_DEFAULTS_OUTSTANDING_TO_DOS_KEY @"OutstandingToDosKey"

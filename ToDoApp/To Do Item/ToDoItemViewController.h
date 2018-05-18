@@ -15,7 +15,7 @@
 - (void)editedToDoItem:(ToDoItem *)toDoItem;
 @end
 
-@interface ToDoItemViewController : UIViewController <UITextFieldDelegate>
+@interface ToDoItemViewController : UIViewController <UITextViewDelegate>
 @property ToDoItem *toDoItem;
 @property (weak, nonatomic) id delegate;
 @end
