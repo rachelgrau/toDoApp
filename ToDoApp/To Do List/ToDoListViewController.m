@@ -64,14 +64,27 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     /* Initialize to do list model. */
-    self.myToDos = [[NSMutableArray alloc] init];
-    ToDoItem *item = [[ToDoItem alloc]  init];
-    item.toDoTitle = @"Clean the kitchen.";
-    item.toDoDescription = @"Clean the house before mom and dad get home!";
-    item.isCompleted = NO;
-    [self.myToDos addObject:item];
+    [self loadToDos];
     
     [self setUpColors];
+}
+
+/* Loads in our list of To Dos from user defaults. This just a hack – in reality I would load them from an API. */
+- (void)loadToDos {
+    NSData *toDosData = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_TO_DOS_KEY];
+    if (toDosData != nil) {
+        NSArray *savedArray = [NSKeyedUnarchiver unarchiveObjectWithData:toDosData];
+        self.myToDos = [savedArray mutableCopy];
+    } else {
+        self.myToDos = [[NSMutableArray alloc] init];
+    }
+}
+
+/* Saves our list of To Dos to user defaults. Similarly, I wouldn't actually do this, I would call an API (and wouldn't save ALL reminders at once, just update individual reminders). */
+- (void)saveToDos {
+    NSData *dataSave = [NSKeyedArchiver archivedDataWithRootObject:self.myToDos];
+    [[NSUserDefaults standardUserDefaults] setObject:dataSave forKey:USER_DEFAULTS_TO_DOS_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)setUpColors {
@@ -95,6 +108,7 @@
         [self.toDosTableView reloadData];
         self.addToDoTextField.text = @"";
         self.addToDoButton.hidden = YES;
+        [self saveToDos]; /* Save to user defaults. Here we would ideally only save the individual reminder that was added (in an API call). */
     }
 }
 
@@ -169,6 +183,7 @@
 /* This method gets called after a user clicks on a particular to do item, edits it, and presses save. */
 - (void)editedToDoItem:(ToDoItem *)toDoItem {
     [self.myToDos replaceObjectAtIndex:self.selectedIndexPath.row withObject:toDoItem];
+    [self saveToDos]; /* Save to user defaults. Here we would ideally only save the individual reminder that was changed (in an API call). */
     [self.toDosTableView reloadData];
 }
 

@@ -8,6 +8,7 @@
 //  Copyright © 2018 Rachel. All rights reserved.
 
 #import "ToDoItem.h"
+#import "Constants.h"
 
 @implementation ToDoItem
 
@@ -18,6 +19,27 @@
         self.isCompleted = NO;
     }
     return self;
+}
+
+/* So we can load from NSUserDefaults*/
+- (id)initWithCoder:(NSCoder *)decoder {
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+    
+    self.toDoTitle = [decoder decodeObjectForKey:USER_DEFAULTS_TO_DO_TITLE_KEY];
+    self.toDoDescription = [decoder decodeObjectForKey:USER_DEFAULTS_TO_DO_DESCRIPTION_KEY];
+    self.isCompleted = [decoder decodeBoolForKey:USER_DEFAULTS_TO_DO_IS_COMPLETED_KEY];
+    
+    return self;
+}
+
+/* So we can store in NSUserDefaults*/
+- (void)encodeWithCoder:(NSCoder *)encoder {
+    [encoder encodeObject:self.toDoTitle forKey:USER_DEFAULTS_TO_DO_TITLE_KEY];
+    [encoder encodeObject:self.toDoDescription forKey:USER_DEFAULTS_TO_DO_DESCRIPTION_KEY];
+    [encoder encodeBool:self.isCompleted forKey:USER_DEFAULTS_TO_DO_IS_COMPLETED_KEY];
 }
 
 - (NSString*)description {
