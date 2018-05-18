@@ -25,7 +25,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To do description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uzc-gg-NVj">
-                        <rect key="frame" x="80" y="20" width="217" height="24"/>
+                        <rect key="frame" x="76" y="20" width="202" height="24"/>
                         <fontDescription key="fontDescription" name="Raleway-ExtraLight" family="Raleway" pointSize="20"/>
                         <color key="textColor" red="0.22745098039215686" green="0.22745098039215686" blue="0.22745098039215686" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -41,24 +41,35 @@
                             <action selector="checkButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="LRo-Qz-zVF"/>
                         </connections>
                     </button>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UrgentIcon" translatesAutoresizingMaskIntoConstraints="NO" id="9eu-FO-aDW">
+                        <rect key="frame" x="278" y="22.5" width="18" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="18" id="Wmo-hX-h9K"/>
+                            <constraint firstAttribute="height" constant="18" id="Y6d-Q3-AQe"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Uzc-gg-NVj" firstAttribute="leading" secondItem="C5M-KU-jgM" secondAttribute="trailing" constant="20" id="1r0-ef-5rs"/>
+                    <constraint firstItem="Uzc-gg-NVj" firstAttribute="leading" secondItem="C5M-KU-jgM" secondAttribute="trailing" constant="16" id="1r0-ef-5rs"/>
                     <constraint firstItem="C5M-KU-jgM" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ZDA-Ip-EPc"/>
+                    <constraint firstAttribute="trailing" secondItem="9eu-FO-aDW" secondAttribute="trailing" constant="24" id="aV0-ft-i5J"/>
+                    <constraint firstItem="9eu-FO-aDW" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="doT-6K-5q9"/>
                     <constraint firstItem="Uzc-gg-NVj" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="fq8-cc-Yux"/>
                     <constraint firstItem="C5M-KU-jgM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="pLd-OK-TeF"/>
-                    <constraint firstAttribute="trailing" secondItem="Uzc-gg-NVj" secondAttribute="trailing" constant="23" id="pnD-Oi-MfU"/>
+                    <constraint firstAttribute="trailing" secondItem="Uzc-gg-NVj" secondAttribute="trailing" constant="42" id="pnD-Oi-MfU"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
                 <outlet property="completeItemButton" destination="C5M-KU-jgM" id="Gcp-BF-www"/>
                 <outlet property="toDoDescriptionLabel" destination="Uzc-gg-NVj" id="Khu-vE-kC3"/>
+                <outlet property="urgentIcon" destination="9eu-FO-aDW" id="JXU-Ic-juC"/>
             </connections>
             <point key="canvasLocation" x="59" y="63"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="UncheckedCircle" width="39" height="39"/>
+        <image name="UrgentIcon" width="31" height="31"/>
     </resources>
 </document>

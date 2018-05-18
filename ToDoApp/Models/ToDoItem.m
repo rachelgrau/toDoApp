@@ -17,6 +17,7 @@
     if (self) {
         self.toDoTitle = toDoTitle;
         self.isCompleted = NO;
+        self.isHighPriority = NO;
     }
     return self;
 }
@@ -31,6 +32,7 @@
     self.toDoTitle = [decoder decodeObjectForKey:USER_DEFAULTS_TO_DO_TITLE_KEY];
     self.toDoDescription = [decoder decodeObjectForKey:USER_DEFAULTS_TO_DO_DESCRIPTION_KEY];
     self.isCompleted = [decoder decodeBoolForKey:USER_DEFAULTS_TO_DO_IS_COMPLETED_KEY];
+    self.isHighPriority = [decoder decodeBoolForKey:USER_DEFAULTS_TO_DO_IS_HIGH_PRIORITY_KEY];
     
     return self;
 }
@@ -40,6 +42,7 @@
     [encoder encodeObject:self.toDoTitle forKey:USER_DEFAULTS_TO_DO_TITLE_KEY];
     [encoder encodeObject:self.toDoDescription forKey:USER_DEFAULTS_TO_DO_DESCRIPTION_KEY];
     [encoder encodeBool:self.isCompleted forKey:USER_DEFAULTS_TO_DO_IS_COMPLETED_KEY];
+    [encoder encodeBool:self.isHighPriority forKey:USER_DEFAULTS_TO_DO_IS_HIGH_PRIORITY_KEY];
 }
 
 - (NSString*)description {

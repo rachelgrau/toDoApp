@@ -19,6 +19,9 @@
 @property UITextView *titleTextView;
 @property UILabel *descriptionLabel;
 @property UITextView *descriptionTextView;
+@property UILabel *priorityTitle;
+@property UILabel *priorityDescription;
+@property UISwitch *highPrioritySwitch;
 @property (strong, nonatomic) IBOutlet UIButton *saveButton;
 @end
 
@@ -108,6 +111,44 @@
     startingY += self.descriptionTextView.frame.size.height;
     startingY += VERTICAL_SPACE_BETWEEN_SECTIONS;
     
+    /* To do priority title */
+    if (self.priorityTitle) {
+        [self.priorityTitle removeFromSuperview];
+    }
+    self.priorityTitle = [[UILabel alloc] initWithFrame:CGRectMake(LEFT_MARGIN, startingY, 0, 0)];
+    self.priorityTitle.text = @"PRIORITY";
+    self.priorityTitle.font = [UIFont fontWithName:@"Raleway-Bold" size:10.0];
+    [self.priorityTitle sizeToFit];
+    [self.view addSubview:self.priorityTitle];
+    startingY += self.priorityTitle.frame.size.height;
+    startingY += VERTICAL_SPACE_BELOW_TITLE;
+    
+    /* To do priority description */
+    if (self.priorityDescription) {
+        [self.priorityDescription removeFromSuperview];
+    }
+    self.priorityDescription = [[UILabel alloc] initWithFrame:CGRectMake(LEFT_MARGIN, startingY, 0, 0)];
+    self.priorityDescription.text = @"Mark as high priority?";
+    self.priorityDescription.font = [UIFont fontWithName:@"Raleway-ExtraLight" size:20];
+    [self.priorityDescription sizeToFit];
+    [self.view addSubview:self.priorityDescription];
+    
+    /* High priority switch */
+    if (self.highPrioritySwitch) {
+        [self.highPrioritySwitch removeFromSuperview];
+    }
+    self.highPrioritySwitch = [[UISwitch alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - LEFT_MARGIN - 40, startingY, 0, 0)];
+    if (self.toDoItem.isHighPriority) {
+        self.highPrioritySwitch.on = YES;
+    } else {
+        self.highPrioritySwitch.on = NO;
+    }
+    self.highPrioritySwitch.center = self.priorityDescription.center;
+    CGRect prioritySwitchFrame = self.highPrioritySwitch.frame;
+    prioritySwitchFrame.origin.x = SCREEN_WIDTH - LEFT_MARGIN - prioritySwitchFrame.size.width;
+    self.highPrioritySwitch.frame = prioritySwitchFrame;
+    [self.view addSubview:self.highPrioritySwitch];
+    
     [self setUpColors];
 }
 
@@ -129,6 +170,10 @@
     [self.saveButton setBackgroundColor:TO_DO_APP_BLUE];
     self.descriptionTextView.tintColor = TO_DO_APP_BLUE;
     self.titleTextView.tintColor = TO_DO_APP_BLUE;
+    self.priorityTitle.textColor = TO_DO_APP_TEXT_GRAY;
+    self.priorityDescription.textColor = TO_DO_APP_TEXT_GRAY;
+    self.highPrioritySwitch.tintColor = TO_DO_APP_BLUE;
+    self.highPrioritySwitch.onTintColor = TO_DO_APP_BLUE;
 }
 
 - (IBAction)saveButtonPressed:(id)sender {
@@ -140,6 +185,7 @@
         } else {
             self.toDoItem.toDoDescription = self.descriptionTextView.text;
         }
+        self.toDoItem.isHighPriority = self.highPrioritySwitch.isOn;
         [self.delegate editedToDoItem:self.toDoItem];
     }
     [self.navigationController popViewControllerAnimated:YES];

@@ -18,6 +18,8 @@
 @interface ToDoItemTableViewCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UILabel *toDoDescriptionLabel;
 @property (strong, nonatomic) IBOutlet UIButton *completeItemButton;
+@property (strong, nonatomic) IBOutlet UIImageView *urgentIcon;
+
 @property (weak, nonatomic) id delegate;
 /* Given a ToDoItem, updates the views on this cell with the information stored in |toDoItem|. Updates the description label to display the description of the to do item and updates the check mark image to be either checked or unchecked depending on whether |toDoItem| is completed. */
 - (void)setUpCellWithToDoItem:(ToDoItem *)toDoItem;

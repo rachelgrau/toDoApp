@@ -40,6 +40,13 @@
     } else {
         [self.completeItemButton setBackgroundImage:[UIImage imageNamed:UNCHECKED_CIRCLE] forState:UIControlStateNormal];
     }
+    
+    /* Display the urgent icon ONLY if the to do item is high priority. */
+    if (toDoItem.isHighPriority) {
+        self.urgentIcon.hidden = NO;
+    } else {
+        self.urgentIcon.hidden = YES;
+    }
 }
 
 - (IBAction)checkButtonPressed:(id)sender {

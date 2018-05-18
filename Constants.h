@@ -15,6 +15,7 @@
 #define UNCHECKED_CIRCLE @"UncheckedCircle"
 #define CHECKED_CIRLCE @"CheckedCircle"
 #define BACK_BUTTON @"BackButton"
+#define URGENT_ICON @"UrgentIcon"
 
 /* STRINGS */
 #define ADD_TO_DO_TEXTFIELD_PLACEHOLDER @"Add a goal..."
@@ -35,5 +36,6 @@
 #define USER_DEFAULTS_TO_DO_TITLE_KEY @"ToDoTitleKey"
 #define USER_DEFAULTS_TO_DO_DESCRIPTION_KEY @"ToDoDescriptionKey"
 #define USER_DEFAULTS_TO_DO_IS_COMPLETED_KEY @"ToDoIsCompletedKey"
+#define USER_DEFAULTS_TO_DO_IS_HIGH_PRIORITY_KEY @"ToDoIsHighPriorityKey"
 
 #endif /* Constants_h */
