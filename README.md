@@ -1,6 +1,11 @@
 # To-do App
 An iOS app that lets add to-dos to a to-do list. Written in Objective-C. 
 
+<b>TO RUN APP:</b>
+- Click on "download ZIP"
+- Open toDoApp-master --> toDoApp.xcodeproj in XCode
+- Run on simulator or on your own device (note that if you have an iPhone X, I've noted a couple problems on iPhoneX that I'd like to improve) 
+
 <b>FEATURES:</b>
 - Add to-dos (name, description, and priority), edit to-dos, delete to-dos.
 - Mark a to-do as complete, see a list of completed to-dos below the outstanding to-dos.
@@ -32,6 +37,7 @@ Models
 - Should limit the length of to do items or descriptions. 
 - Didn't implement for iPad
 - Add ability to sight to go back on navigation (from ToDoItemViewController to ToDoListViewController)
+- Add testing!
 
 <b>FUTURE FEATURES:</b>
 - Connect to a backend.
