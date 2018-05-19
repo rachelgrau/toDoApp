@@ -16,7 +16,7 @@ An iOS app that lets users add to-dos to a to-do list. Written in Objective-C.
 
 Important View Controllers
 - <b>ToDoListViewController.[h/m]</b>: this class displays a single to-do list. On this screen the user can add to-dos quickly by typing in the textfield at the top. On top is a section of outstanding to-dos, and below that is a section displaying completed to-dos. The user can mark to-dos as complete by clicking on a checkmark. 
-- <b>ToDoItemViewController.[h/m.</b>: this class displays a single to-do item and allows the user to edit its name, description, and priority.
+- <b>ToDoItemViewController.[h/m]</b>: this class displays a single to-do item and allows the user to edit its name, description, and priority.
 
 Models
 - <b>ToDoItem.[h/m]</b>: this class represents a To-do object. It stores the to-do's name, description, priority, and whether it's completed. For now we store a user's to-dos on their phone (not a backend, not Core Data) with NSUserDefaults (temporary hack).
