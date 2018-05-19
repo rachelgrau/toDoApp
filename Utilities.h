@@ -1,7 +1,7 @@
 /**
  * File: Utilities.h
  * ------------------------------
- * Contains a list of constants used throughout the app (e.g. image names).
+ * Contains some useful functions used throughout the app.
  */
 
 //  Created by Rachel on 17/05/2018.
